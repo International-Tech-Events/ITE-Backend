@@ -27,7 +27,7 @@ export const postEvents = async (req, res, next) => {
 
 export const getEventById = async (req, res) => {
     try{
-        const EventId = req.params.id;
+        const eventId = req.params.id;
         const getEventId = await EventsModel.findById(req.params.id)
         res.status(200).send(getEventId);
 
