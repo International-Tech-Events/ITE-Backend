@@ -9,7 +9,7 @@ import { dbConnection } from "./config/db.js";
 const app = express();
 expressOasGenerator.handleResponses(app, {
     alwaysServeDocs: true,
-    tags: [''],
+    tags: ['events'],
     mongooseModels: mongoose.modelNames(),
 });
 

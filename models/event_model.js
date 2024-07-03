@@ -5,7 +5,7 @@ const eventsSchema = new Schema({
 
 name: {type: String, unique:true, required: true},
 
-date: {Date, default: Date.now},
+date: {type: Date, required: true},
 
 price: {type: Number},
 
