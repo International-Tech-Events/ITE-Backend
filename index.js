@@ -15,7 +15,7 @@ dbConnection();
 app.use(eventsRouter);
 
 
-app.listen(7060, () => {
+app.listen(7080, () => {
     console.log('App listening on port 7080');
 });
 
