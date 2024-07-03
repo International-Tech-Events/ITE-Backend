@@ -26,15 +26,14 @@ export const postEvents = async (req, res, next) => {
 }
 
 export const getEventById = async (req, res) => {
-    try{
-        const getEventId = await EventsModel.findById(req.params.id)
-        res.status(200).send(getEventId);
-
-} catch (error) {
+    try {
+        const eventId = req.params.id;
+        const event = await EventsModel.findById(eventId);
+        res.status(200).send(event);
+    } catch (error) {
         console.log(error)
-
     }
-}
+};
 
 export const patchEvents = async (req,res) => {
     try {
