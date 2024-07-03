@@ -11,6 +11,11 @@
     "multer-savefilesorg": "^1.0.2",
     "normalize-mongoose": "^1.0.0"
   },
+  "name": "tech-events-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+
   "scripts": {
     "dev": "nodemon index.js",
     "start": "node index.js"
