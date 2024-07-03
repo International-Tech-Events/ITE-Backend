@@ -8,26 +8,6 @@
     "mongodb": "^6.8.0",
     "mongoose": "^8.4.4",
     "multer": "^1.4.5-lts.1",
-<<<<<<< HEAD
-=======
-    "multer-savefilesorg": "^1.0.2",
-    "normalize-mongoose": "^1.0.0"
-  },
-  "name": "tech-events-api",
-  "version": "1.0.0",
-  "main": "index.js",
-  "type": "module",
-
-  "scripts": {
-    "dev": "nodemon index.js",
-    "start": "node index.js"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
-  "devDependencies": {
->>>>>>> 1f75e25435b2293960d18476efd20ac5b902c134
     "nodemon": "^3.1.4"
   }
 }
