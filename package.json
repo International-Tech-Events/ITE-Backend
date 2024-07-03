@@ -17,7 +17,7 @@
   "type": "module",
 
   "scripts": {
-    "dev": "nodemon index.js",
+    "dev": "nodemon --env-file=.env index.js",
     "start": "node index.js"
   },
   "keywords": [],

@@ -13,21 +13,18 @@ expressOasGenerator.handleResponses(app, {
     mongooseModels: mongoose.modelNames(),
 });
 
-
-app.use(express.json());
-app.use(express.static('uploads'));
-
-
-
 dbConnection();
 
 app.use(cors());
+app.use(express.json());
+app.use(express.static('events'));
+
 app.use(eventsRouter);
 expressOasGenerator.handleRequests();
 app.use((req, res) => res.redirect('/api-docs/'));
 
 
-
+const port = process.env.PORT || 7080;
 app.listen(7080, () => {
     console.log('App listening on port 7080');
 });

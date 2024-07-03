@@ -17,7 +17,7 @@ export const postEvents = async (req, res, next) => {
         console.log(req.body)
         const postEvents = await EventsModel.create({
             ...req.body,
-            image: req.file.filename
+            tech: req.file.filename
         })
         res.status(200).send(postEvents);
 
@@ -27,7 +27,6 @@ export const postEvents = async (req, res, next) => {
 
 export const getEventById = async (req, res) => {
     try{
-        const eventId = req.params.id;
         const getEventId = await EventsModel.findById(req.params.id)
         res.status(200).send(getEventId);
 
