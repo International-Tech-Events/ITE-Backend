@@ -1,9 +1,12 @@
 import { Router } from "express";
 import { postEvents, getEvents, patchEvents, getEventById, deleteEvents } from "../controllers/event_controller.js"
+import { remoteUpload } from "../middlewares/uploads.js"
 
+// Create Router
 const eventRouter = Router();
 
-eventRouter.post('/events', postEvents);
+// Define Routes
+eventRouter.post('/events', remoteUpload.single('image'), postEvents);
 
 eventRouter.get('/events', getEvents);
 
