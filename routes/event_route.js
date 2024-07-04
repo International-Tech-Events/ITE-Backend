@@ -6,11 +6,11 @@ import { remoteUpload } from "../middlewares/uploads.js"
 const eventRouter = Router();
 
 // Define Routes
-eventRouter.post('/events', remoteUpload.single('events'), postEvents);
+eventRouter.post('/events', remoteUpload.single('flier'), postEvents);
 
 eventRouter.get('/events', getEvents);
 
-eventRouter.patch('/events/:id', patchEvents);
+eventRouter.patch('/events/:id', remoteUpload.single('flier'), patchEvents);
 
 eventRouter.get('/events/:id', getEventById);
 

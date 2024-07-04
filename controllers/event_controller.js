@@ -1,23 +1,29 @@
 import {EventsModel} from "../models/event_model.js"
 
 export const getEvents = async (req, res, next) => {
-try{
-    console.log('request', req.body)
-    const getEvent = await EventsModel.find()
-    res.status(200).send(getEvent);
+    try {
+        // Get Query Params
+        const { limit = 4, skip = 0, filter = "{}", sort = "{}", fields = "{}" } = req.query;
+        // Get All Categories From database
+        const getEvent = await EventsModel
+            .find(JSON.parse(filter))
+            .select(JSON.parse(fields))
+            .limit(JSON.parse(limit)) 
+            .skip(JSON.parse(skip))
+            .sort(JSON.parse(sort))
+        //Return response
+        res.status(200).json(getEvent);
+    } catch (error) {
+        next(error);
+    }
+};
 
-} catch (error) {
-    console.log(error)
-
-}
-}
-
-export const postEvents = async (req, res, next) => {
+export const postEvents = async (req, res) => {
     try{
         console.log(req.body)
         const postEvents = await EventsModel.create({
             ...req.body,
-            tech: req.file.filename
+            flierUrl: req.file.filename
         })
         res.status(200).send(postEvents);
 
@@ -35,16 +41,23 @@ export const getEventById = async (req, res) => {
     }
 };
 
-export const patchEvents = async (req,res) => {
+export const patchEvents = async (req, res) => {
+    // const { price } = req.body; 
+    // console.log("updateEvent", price);
+
     try {
-        const updateEvent = await EventsModel.findByIdAndUpdate(req.params.id, req.body);
+        const updateEvent = await EventsModel.findByIdAndUpdate(
+            req.params.id, 
+            {...req.body, image:req?.file?.filename}, 
+            { new: true } 
+        );
+
         res.status(200).send(updateEvent);
-
     } catch (error) {
-        console.log(error)
-
+        console.log(error);
     }
-}
+};
+
 
 export const deleteEvents = async (req, res) => {
     try{
