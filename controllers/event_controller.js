@@ -3,7 +3,7 @@ import {EventsModel} from "../models/event_model.js"
 export const getEvents = async (req, res, next) => {
     try {
         // Get Query Params
-        const { limit = 4, skip = 0, filter = "{}", sort = "{}", fields = "{}" } = req.query;
+        const { limit =15, skip = 0, filter = "{}", sort = "{}", fields = "{}" } = req.query;
         // Get All Categories From database
         const getEvent = await EventsModel
             .find(JSON.parse(filter))
