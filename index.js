@@ -25,7 +25,7 @@ app.use((req, res) => res.redirect('/api-docs/'));
 
 
 const port = process.env.PORT || 7080;
-app.listen(7080, () => {
-    console.log('App listening on port 7080');
+app.listen(port, () => {
+    console.log(`App listening on port ${port}`);
 });
 

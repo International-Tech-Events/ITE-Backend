@@ -7,6 +7,10 @@ name: {type: String, unique:true, required: true},
 
 date: {type: Date, required: true},
 
+description: {type: String},
+
+facilitator: {type: String},
+
 price: {type: Number},
 
 location: {type: String},
