@@ -1,23 +1,32 @@
 import {EventsModel} from "../models/event_model.js"
 
+// Get Events
 export const getEvents = async (req, res, next) => {
     try {
         // Get Query Params
-        const { limit =15, skip = 0, filter = "{}", sort = "{}", fields = "{}" } = req.query;
+        let { page = 1 } = req.query;
+        const limit = 5;
+        const skip = (page - 1) * limit;
+        const filter = "{}";
+        const sort = "{}";
+        const fields = "{}";
+
         // Get All Categories From database
         const getEvent = await EventsModel
             .find(JSON.parse(filter))
             .select(JSON.parse(fields))
-            .limit(JSON.parse(limit)) 
-            .skip(JSON.parse(skip))
-            .sort(JSON.parse(sort))
-        //Return response
+            .limit(limit)
+            .skip(skip)
+            .sort(JSON.parse(sort));
+
+        // Return response
         res.status(200).json(getEvent);
     } catch (error) {
         next(error);
     }
 };
 
+// Add Events
 export const postEvents = async (req, res) => {
     try{
         console.log(req.body)
@@ -29,8 +38,9 @@ export const postEvents = async (req, res) => {
 
     } catch (error) {
     console.log(error)}
-}
+};
 
+// Get Event By ID
 export const getEventById = async (req, res) => {
     try {
         const eventId = req.params.id;
@@ -41,6 +51,7 @@ export const getEventById = async (req, res) => {
     }
 };
 
+// Update Events
 export const patchEvents = async (req, res) => {
     // const { price } = req.body; 
     // console.log("updateEvent", price);
@@ -58,7 +69,7 @@ export const patchEvents = async (req, res) => {
     }
 };
 
-
+// Delete Events
 export const deleteEvents = async (req, res) => {
     try{
         const deletedEvent = await EventsModel.findByIdAndDelete(req.params.id);
@@ -67,7 +78,6 @@ export const deleteEvents = async (req, res) => {
         console.log(error)
 
     }
-}
-
+};
 
 
